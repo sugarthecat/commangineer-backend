@@ -11,7 +11,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
   die("{\"Error:\" : \"Connection failed: " . $conn->connect_error . "\"");
 }
-$sql = "SELECT completion_time, user FROM score ORDER BY completion_time LIMIT 5";
+$sql = "SELECT completion_time, user FROM score ORDER BY completion_time LIMIT 25";
 $result = $conn->query($sql);
 $currentRank = 1;
 if ($result->num_rows > 0) {
