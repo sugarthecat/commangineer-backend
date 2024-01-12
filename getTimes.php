@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "auto-commangineer";
-$password = "28an289dab-BPA2023";
+$username = "ktprog2";
+$password = "Keefe2012";
 $dbname = "commangineer";
 
 // Create connection
