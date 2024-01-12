@@ -13,14 +13,14 @@ if(!isset($_GET["level"]) || !is_numeric($_GET["level"])){
 if(!isset($_GET["time"]) || !is_numeric($_GET["time"])){
   die("{\"Error:\" : \"Connection failed: no value / invalid passed for after\"}");
 }
-if(!isset($_GET["name"]) || !ctype_alpha($_GET["name"]) || strlen($_GET["name"]) < 3){
+if(!isset($_GET["userid"]) || !is_numeric($_GET["userid"])){
   die("{\"Error:\" : \"Connection failed: no value / invalid passed for name\"}");
 }
 // Check connection
 if ($conn->connect_error) {
   die("{\"Error:\" : \"Connection failed: " . $conn->connect_error . "\"}");
 }
-$sql = "INSERT INTO run_time (level_id, completion_time, user) VALUES (".$_GET["level"].",".$_GET["time"].",\"".$_GET["name"]."\")";
+$sql = "INSERT INTO run_time (level_id, completion_time, user_id) VALUES (".$_GET["level"].",".$_GET["time"].",\"".$_GET["userid"]."\")";
 $result = $conn->query($sql);
 $conn->close();
 ?>

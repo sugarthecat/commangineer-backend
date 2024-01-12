@@ -17,7 +17,7 @@ if(!isset($_GET["after"]) || !is_numeric($_GET["after"])){
 if ($conn->connect_error) {
   die("{\"Error:\" : \"Connection failed: " . $conn->connect_error . "\"}");
 }
-$sql = "SELECT completion_time, user FROM run_time WHERE level_id = " .$_GET["level"]." ORDER BY completion_time LIMIT 5 OFFSET " . $_GET["after"];
+$sql = "SELECT completion_time, username FROM run_time INNER JOIN settings ON settings.user_id = run_time.user_id WHERE level_id = " .$_GET["level"]." ORDER BY completion_time LIMIT 5 OFFSET " . $_GET["after"];
 $result = $conn->query($sql);
 $currentRank = 1;
 if ($result->num_rows > 0) {
@@ -27,7 +27,7 @@ if ($result->num_rows > 0) {
     if($currentRank != 1){
       echo ",";
     }
-    echo "{ \"name\":\"" . $row["user"]. "\",\"time\":" . $row["completion_time"]. "} ";
+    echo "{ \"name\":\"" . $row["username"]. "\",\"time\":" . $row["completion_time"]. "} ";
     $currentRank = $currentRank + 1;
   }
   echo "]}";
